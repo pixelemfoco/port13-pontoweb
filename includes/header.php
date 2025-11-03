@@ -16,7 +16,12 @@
     <header>
       <?php if (session_status() === PHP_SESSION_ACTIVE && !empty($_SESSION['nome'])): ?>
         <div>Usuário: <strong><?php echo htmlspecialchars($_SESSION['cod_funcionario'] ?? ''); ?></strong> - <?php echo htmlspecialchars($_SESSION['nome'] ?? ''); ?></div>
-        <div style="float:right;"><a href="/logout.php">Sair</a></div>
-        <div style="clear:both"></div>
       <?php endif; ?>
+
+      <div style="float:right; display:flex; gap:10px; align-items:center;">
+        <!-- Theme toggle button -->
+        <button id="theme-toggle" aria-label="Alternar tema" title="Alternar tema" style="background:transparent;border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px;cursor:pointer">🌗</button>
+        <a href="/logout.php">Sair</a>
+      </div>
+      <div style="clear:both"></div>
     </header>

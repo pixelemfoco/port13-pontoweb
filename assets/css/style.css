@@ -1,19 +1,220 @@
+/* ==========================
+   Variáveis globais (palette + mappings)
+========================== */
+:root {
+    --font-size: 1rem;
 
-body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
-.container { max-width: 1200px; margin: 30px auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-h2 { text-align: center; margin-bottom: 20px; }
-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-th, td { border: 1px solid #e0e0e0; padding: 12px 15px; text-align: left; vertical-align: middle; }
-th { background-color: #007bff; color: white; font-weight: bold; text-transform: uppercase; font-size: 0.9em; }
-tr:nth-child(even) { background-color: #f9f9f9; }
-tr:hover { background-color: #f1f1f1; }
-td b { color: #0056b3; }
-form { margin-bottom: 20px; text-align: center; }
-input[type="date"] { padding: 5px 10px; margin: 0 5px; }
-button { padding: 6px 15px; }
-a { text-decoration: none; color: #007bff; font-weight: bold; transition: color 0.3s ease; }
-a:hover { color: #0056b3; }
-.add-button { display: inline-block; padding: 10px 15px; background-color: #28a745; color: white; text-decoration: none; border-radius: 5px; margin-bottom: 20px; transition: background-color 0.3s ease; }
-.add-button:hover { background-color: #218838; }
-.action-links a { margin: 0 5px; }
-.totais { margin-top: 20px; font-weight: bold; }
+    /* Palette - Light (default) */
+    --bg-color: #ffffff;
+    --text-color: #404040;
+    --primary-color: #F25C05;
+    --secondary-color: #f3f4f6;
+
+    /* Legacy mappings */
+    --bg-page: var(--bg-color);
+    --bg-panel: var(--secondary-color);
+    --text: var(--text-color);
+    --subtext: rgba(64,64,64,0.8);
+    --primary-start: var(--primary-color);
+    --primary-end: var(--primary-color);
+    --accent: var(--primary-color);
+    --border: rgba(15,23,36,0.06);
+    --header-bg: var(--secondary-color);
+    --row-alt: rgba(2,6,23,0.02);
+    --row-hover: rgba(2,6,23,0.04);
+    --input-bg: var(--bg-color);
+    --input-border: rgba(15,23,36,0.06);
+    --button-shadow: 0 2px 6px rgba(2,6,23,0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #0D0D0D;
+        --text-color: #F2F2F2;
+        --primary-color: #F25C05;
+        --secondary-color: #403C3A;
+
+        --bg-page: var(--bg-color);
+        --bg-panel: var(--secondary-color);
+        --text: var(--text-color);
+        --subtext: rgba(242,242,242,0.85);
+        --primary-start: var(--primary-color);
+        --primary-end: var(--primary-color);
+        --accent: var(--primary-color);
+        --border: rgba(255,255,255,0.03);
+        --header-bg: var(--secondary-color);
+        --row-alt: rgba(255,255,255,0.02);
+        --row-hover: rgba(255,255,255,0.03);
+        --input-bg: #151515;
+        --input-border: rgba(255,255,255,0.04);
+        --button-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+}
+
+/* ==========================
+   Reset básico
+========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    font-size: var(--font-size);
+}
+
+/* ==========================
+   Base do body e containers
+========================== */
+body {
+    background-color: var(--bg-page);
+    color: var(--text);
+    margin: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: var(--bg-panel);
+    border-radius: 8px;
+    box-shadow: 0 4px 18px rgba(2,6,23,0.06);
+    border: 1px solid var(--border);
+}
+
+/* ==========================
+   Títulos e textos
+========================== */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--text);
+}
+
+/* ==========================
+   Tabelas
+========================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: transparent;
+}
+
+th, td {
+    border: 1px solid var(--border);
+    padding: 12px 15px;
+    text-align: left;
+    vertical-align: middle;
+    color: var(--text);
+}
+
+th {
+    background: var(--header-bg);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85em;
+}
+
+tr:nth-child(even) { background: var(--row-alt); }
+tr:hover { background: var(--row-hover); }
+td b { color: var(--primary-start); }
+
+/* ==========================
+   Formulários
+========================== */
+form, .form-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px 10px;
+    margin: 5px 0;
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--text);
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 8px 16px;
+    background: linear-gradient(180deg, var(--primary-start), var(--primary-end));
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: var(--button-shadow);
+    transition: filter 0.2s ease;
+}
+
+button:hover {
+    filter: brightness(1.05);
+}
+
+/* ==========================
+   Links
+========================== */
+a {
+    text-decoration: none;
+    color: var(--primary-start);
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+a:hover { color: var(--primary-end); }
+
+/* ==========================
+   Botões especiais
+========================== */
+.add-button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    transition: background-color 0.2s ease, transform 0.08s ease;
+}
+
+.add-button:hover {
+    filter: brightness(0.95);
+    transform: translateY(-1px);
+}
+
+/* ==========================
+   Login box
+========================== */
+.login-box {
+    max-width: 420px;
+    margin: 40px auto;
+    padding: 20px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.login-box h2 { margin-top: 0; color: var(--text); }
+.login-box label { display: block; margin: 10px 0 6px; color: var(--subtext); }
+.login-box input { width: 100%; padding: 10px; margin: 5px 0; border-radius: 6px; border: 1px solid var(--input-border); background: var(--input-bg); color: var(--text); }
+
+/* ==========================
+   Botões de ponto
+========================== */
+.ponto-buttons button { margin: 6px; }
+
+/* ==========================
+   Totais
+========================== */
+.totais { margin-top: 20px; font-weight: 700; color: var(--text); }
+
+/* ==========================
+   Responsivo
+========================== */
+@media (max-width: 720px) {
+    .container { margin: 12px; padding: 12px; }
+    .login-box { margin: 20px 10px; }
+}

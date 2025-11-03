@@ -27,7 +27,8 @@ $totalBancoSeg = 0;
 ?>
 <?php
 $pageTitle = 'Banco de Horas — '.htmlspecialchars((new DateTime($inicio))->format('F Y'));
-require_once __DIR__.'/../../includes/header.php';
+// includes is one level up from /usr
+require_once __DIR__.'/../includes/header.php';
 ?>
         <h2>Banco de Horas — <?= htmlspecialchars((new DateTime($inicio))->format('F Y')) ?></h2>
         <p><a href="../dashboard.php">Voltar ao Dashboard</a></p>

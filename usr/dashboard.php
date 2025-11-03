@@ -5,7 +5,8 @@ $cod = $_SESSION['cod_funcionario'];
 $nome = $_SESSION['nome'];
 
 $pageTitle = 'Dashboard - '.htmlspecialchars($nome);
-require_once __DIR__.'/../../includes/header.php';
+// includes is one level up from /usr
+require_once __DIR__.'/../includes/header.php';
 ?>
     <main>
       <h3>Bater Ponto</h3>

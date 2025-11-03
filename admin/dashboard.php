@@ -4,7 +4,8 @@ if (!isAdmin()) { header('Location: /login.php'); exit; }
 require_once __DIR__.'/../../includes/config.php';
 
 $pageTitle = 'Admin';
-require_once __DIR__.'/../../includes/header.php';
+// includes is one level up from /admin
+require_once __DIR__.'/../includes/header.php';
 ?>
     <h1>Admin Dashboard</h1>
     <p>Ações administrativas</p>
