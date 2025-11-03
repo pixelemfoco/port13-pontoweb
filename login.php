@@ -1,36 +1,24 @@
 <?php
 // public/login.php
 session_start();
-if (isset($_SESSION['cod_funcionario'])) {
-  header('Location: index.php'); exit;
-}
+if (isset($_SESSION['cod_funcionario'])) { header('Location: index.php'); exit; }
 
 // gerar token CSRF simples
-if (empty($_SESSION['csrf_token'])) {
-  $_SESSION['csrf_token'] = bin2hex(random_bytes(16));
-}
+if (empty($_SESSION['csrf_token'])) { $_SESSION['csrf_token'] = bin2hex(random_bytes(16)); }
+
+$pageTitle = 'Login';
+require_once __DIR__ . '/includes/header.php';
 ?>
-<!doctype html>
-<html>
-<head><meta charset="utf-8"><title>Login</title><link rel="stylesheet" href="/assets/css/styles.css"></head>
-<body>
-  <div class="login-box">
     <h2>Entrar</h2>
     <form action="auth.php" method="post">
       <label>Código do Funcionário</label>
       <input type="text" name="cod_funcionario" required>
       <label>Senha</label>
       <input type="password" name="senha" required>
-      <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(
-          
-          
-          
-          $_SESSION['csrf_token']
-      ); ?>">
-      <button type="submit">Entrar</button>
+      <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
+      <div style="margin-top:12px;"><button type="submit">Entrar</button></div>
     </form>
-    <p>Nao tenho cadastro</p>
-    <p>Esqueci a Senha</p>
-  </div>
-</body>
-</html>
+    <p><a href="#">Não tenho cadastro</a></p>
+    <p><a href="#">Esqueci a Senha</a></p>
+<?php
+require_once __DIR__ . '/includes/footer.php';

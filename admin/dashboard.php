@@ -1,16 +1,15 @@
 <?php
 require_once __DIR__.'/../../includes/session.php';
-if (!isAdmin()) { header('Location: /public/login.php'); exit; }
+if (!isAdmin()) { header('Location: /login.php'); exit; }
 require_once __DIR__.'/../../includes/config.php';
+
+$pageTitle = 'Admin';
+require_once __DIR__.'/../../includes/header.php';
 ?>
-<!doctype html><html>
-<head><meta charset="utf-8"><title>Admin</title></head>
-<body>
-<h1>Admin Dashboard</h1>
-<ul>
-  <li><a href="manage_registros.php">Gerenciar Registros</a></li>
-  <li><a href="feriados.php">Cadastrar Feriados</a></li>
-  <li><a href="faltas.php">Controle de Faltas / Justificativas</a></li>
-</ul>
-</body>
-</html>
+    <h1>Admin Dashboard</h1>
+    <p>Ações administrativas</p>
+    <a class="add-button" href="manage_registros.php">Gerenciar Registros</a>
+    <a class="add-button" href="feriados.php">Cadastrar Feriados</a>
+    <a class="add-button" href="faltas.php">Controle de Faltas / Justificativas</a>
+<?php
+require_once __DIR__.'/../../includes/footer.php';

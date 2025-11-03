@@ -24,8 +24,15 @@ $period = new DatePeriod(new DateTime($inicio), new DateInterval('P1D'), (new Da
 $totalMesSeg = 0;
 $totalBancoSeg = 0;
 
-echo "<h2>Banco de Horas — ". (new DateTime($inicio))->format('F Y') ."</h2>";
-echo "<table><thead><tr><th>Dia</th><th>Data</th><th>Semana</th><th>Entrada</th><th>Saída Alm</th><th>Volta Alm</th><th>Saída</th><th>Total</th><th>Banco</th></tr></thead><tbody>";
+?>
+<?php
+$pageTitle = 'Banco de Horas — '.htmlspecialchars((new DateTime($inicio))->format('F Y'));
+require_once __DIR__.'/../../includes/header.php';
+?>
+        <h2>Banco de Horas — <?= htmlspecialchars((new DateTime($inicio))->format('F Y')) ?></h2>
+        <p><a href="../dashboard.php">Voltar ao Dashboard</a></p>
+        <table><thead><tr><th>Dia</th><th>Data</th><th>Semana</th><th>Entrada</th><th>Saída Alm</th><th>Volta Alm</th><th>Saída</th><th>Total</th><th>Banco</th></tr></thead><tbody>
+<?php
 foreach($period as $d) {
     $ds = $d->format('Y-m-d');
     $entrada=''; $saida_almoco=''; $volta_almoco=''; $saida='';
@@ -56,5 +63,9 @@ foreach($period as $d) {
     echo "<td>" . htmlspecialchars(($bancoSeg>=0?'+':'') . formatarHoras(abs($bancoSeg))) . "</td>";
     echo "</tr>";
 }
-echo "</tbody></table>";
-echo "<div>Total mês: ".formatarHoras($totalMesSeg)." — Banco mês: ".($totalBancoSeg>=0?'+':'').formatarHoras(abs($totalBancoSeg))."</div>";
+?>
+    </tbody></table>
+    <div class="totais">Total mês: <?= htmlspecialchars(formatarHoras($totalMesSeg)) ?> — Banco mês: <?= htmlspecialchars(($totalBancoSeg>=0?'+':'')) ?><?= htmlspecialchars(formatarHoras(abs($totalBancoSeg))) ?></div>
+<?php
+require_once __DIR__.'/../../includes/footer.php';
+
