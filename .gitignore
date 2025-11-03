@@ -5,3 +5,16 @@ vendor/
 /.vscode
 *.log
 node_modules/
+
+# Ignore any local config files that may contain credentials
+includes/*.local.php
+includes/*.secret.php
+
+# Environment files
+.env.local
+.env.*
+
+# Private keys and certs
+*.key
+*.pem
+*.crt
