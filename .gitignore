@@ -1,0 +1,7 @@
+/.env
+includes/config.local.php
+vendor/
+/.idea
+/.vscode
+*.log
+node_modules/

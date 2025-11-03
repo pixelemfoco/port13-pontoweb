@@ -45,15 +45,15 @@ foreach($period as $d) {
     $totalBancoSeg += $bancoSeg;
 
     echo "<tr>";
-    echo "<td>".$d->format('d')."</td>";
-    echo "<td>{$ds}</td>";
-    echo "<td>{$weekName}</td>";
-    echo "<td>{$entrada}</td>";
-    echo "<td>{$saida_almoco}</td>";
-    echo "<td>{$volta_almoco}</td>";
-    echo "<td>{$saida}</td>";
-    echo "<td>".formatarHoras($totalSegDia)."</td>";
-    echo "<td>".($bancoSeg>=0?'+':'').formatarHoras(abs($bancoSeg))."</td>";
+    echo "<td>" . htmlspecialchars($d->format('d')) . "</td>";
+    echo "<td>" . htmlspecialchars($ds) . "</td>";
+    echo "<td>" . htmlspecialchars($weekName) . "</td>";
+    echo "<td>" . htmlspecialchars($entrada) . "</td>";
+    echo "<td>" . htmlspecialchars($saida_almoco) . "</td>";
+    echo "<td>" . htmlspecialchars($volta_almoco) . "</td>";
+    echo "<td>" . htmlspecialchars($saida) . "</td>";
+    echo "<td>" . htmlspecialchars(formatarHoras($totalSegDia)) . "</td>";
+    echo "<td>" . htmlspecialchars(($bancoSeg>=0?'+':'') . formatarHoras(abs($bancoSeg))) . "</td>";
     echo "</tr>";
 }
 echo "</tbody></table>";
