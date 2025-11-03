@@ -18,7 +18,7 @@ require_once __DIR__ . '/includes/header.php';
       <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
       <div style="margin-top:12px;"><button type="submit">Entrar</button></div>
     </form>
-    <p><a href="#">Não tenho cadastro</a></p>
-    <p><a href="#">Esqueci a Senha</a></p>
+    <p><a href="https://pixelemfoco.com/portifolio/port10-login/cadastrar.php">Não tenho cadastro</a></p>
+    <p><a href="https://pixelemfoco.com/portifolio/port10-login/esquecisenha.php">Esqueci a Senha</a></p>
 <?php
 require_once __DIR__ . '/includes/footer.php';
